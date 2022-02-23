@@ -27,6 +27,8 @@ function Create() {
         />
         <label>Blog body:</label>
         <textarea
+          rows="10"
+          cols="100"
           required
           value={body}
           onChange={(e) => setBody(e.target.value)}
