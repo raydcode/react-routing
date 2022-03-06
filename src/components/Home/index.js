@@ -1,20 +1,21 @@
 import React from 'react';
 import List from '../List';
 
-import {useFetch} from '../../hooks';
+import { useFetch } from '../../hooks';
+
+import { deleteDoc, doc, db } from '../../config';
 
 function Home() {
+  const { data, setData } = useFetch();
 
-  const {data,setData} = useFetch('https://jsonplaceholder.typicode.com/posts')
-
-
-  console.log(data);
   const removePost = (id) => {
     console.log(id);
 
-    const filtredBlogs = data.filter((blog) => blog.id !== id);
+    const filtredBlogs = doc(db, 'posts', id);
 
-    setData(filtredBlogs);
+    deleteDoc(filtredBlogs)
+      .then(() => {})
+      .catch((error) => {});
   };
 
   return (

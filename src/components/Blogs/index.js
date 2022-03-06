@@ -7,14 +7,13 @@ import { useParams } from 'react-router-dom';
 function Blogs() {
   const { id } = useParams();
 
-  const { data } = useFetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  const { data } = useFetch(id);
 
   return (
     <div className="blog-details">
-      Blogs details {id}
       <article>
         <h2>{data.title}</h2>
-        <div>{data.body}</div>
+        <div>{data.content}</div>
       </article>
     </div>
   );

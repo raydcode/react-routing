@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { addDoc, colRef} from '../../config';
+
 function Create() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -8,10 +10,17 @@ function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const blog = { title, body };
-
-    console.log(blog);
-    navigate('/');
+    addDoc(colRef, {
+      title: title,
+      content: body,
+      createdAt: new Date(),
+    })
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        alert('Error');
+      });
   };
 
   return (
