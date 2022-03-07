@@ -14,6 +14,8 @@ import {
   getDoc,
 } from 'firebase/firestore';
 
+import { getAuth } from 'firebase/auth';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyD4r9mCJ813hrRyuvvzxDTcX6gRLdoEtBA',
@@ -25,10 +27,21 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
 const colRef = collection(db, 'posts');
+const auth = getAuth(app);
 
-export { colRef, addDoc, deleteDoc, doc, updateDoc, onSnapshot, getDoc, db };
+export {
+  colRef,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+  onSnapshot,
+  getDoc,
+  db,
+  auth,
+};

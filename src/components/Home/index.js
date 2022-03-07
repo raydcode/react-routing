@@ -6,7 +6,7 @@ import { useFetch } from '../../hooks';
 import { deleteDoc, doc, db } from '../../config';
 
 function Home() {
-  const { data, setData } = useFetch();
+  const { data} = useFetch();
 
   const removePost = (id) => {
     console.log(id);
